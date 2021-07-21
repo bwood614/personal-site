@@ -1,9 +1,10 @@
-import "./App.css";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Header from "./layout/Header";
 import Footer from "./layout/Footer";
-import Home from "./home/Home";
-import WorkExperience from "./workExperience/WorkExperience";
+import AboutMe from "./aboutMe/AboutMe";
+import Experience from "./experience/Experience";
+import Projects from "./projects/Projects";
+import Contact from "./contact/Contact";
 
 function App() {
   return (
@@ -12,12 +13,19 @@ function App() {
         <Header />
         <Switch>
           <Route exact path="/">
-            <Home title="Brayden's Page" />
+            <AboutMe />
           </Route>
-          <Route exact path="/work-experience">
-            <WorkExperience title="Work Experience" />
+          <Route exact path="/experience">
+            <Experience />
+          </Route>
+          <Route exact path="/projects">
+            <Projects />
+          </Route>
+          <Route exact path="/contact">
+            <Contact />
           </Route>
         </Switch>
+        <Footer />
       </Router>
     </>
   );

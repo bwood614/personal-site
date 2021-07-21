@@ -1,10 +1,21 @@
 import React from "react";
 import Navigation from "./Navigation";
-import "./Layout.css";
+import { Link } from "react-router-dom";
 
 const Header = () => {
+  const style = {
+    header: {
+      height: "70px",
+      padding: "0px 20px",
+      display: "flex",
+      justifyContent: "space-between",
+      alignItems: "center",
+      backgroundColor: "#FFFFFF",
+    },
+  };
+
   return (
-    <div className="header-container">
+    <div style={style.header}>
       <Navigation />
     </div>
   );
