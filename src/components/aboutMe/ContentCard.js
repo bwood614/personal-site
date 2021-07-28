@@ -34,7 +34,7 @@ const ContentCard = ({ title, text, url, icon, buttonText }) => {
       <p style={style.title}>{title}</p>
       <p style={style.text}>{text}</p>
       <Link to={url}>
-        <button style={style.button}>{buttonText}</button>
+        <button>{buttonText}</button>
       </Link>
     </div>
   );

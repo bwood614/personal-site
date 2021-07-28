@@ -1,13 +1,24 @@
 import React from "react";
+import ProjectsCardContainer from "./ProjectsCardContainer.js";
 
 const Projects = () => {
   const style = {
+    background: {
+      backgroundColor: "#F3F3F3",
+      padding: 30,
+    },
     title: {
-      color: "green",
+      textAlign: "center",
+      marginBottom: 0,
     },
   };
 
-  return <h1>My Projects</h1>;
+  return (
+    <div style={style.background}>
+      <h1 style={style.title}>My Experience</h1>
+      <ProjectsCardContainer />
+    </div>
+  );
 };
 
 export default Projects;

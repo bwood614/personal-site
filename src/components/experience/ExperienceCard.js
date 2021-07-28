@@ -12,9 +12,8 @@ const ExperienceCard = ({
   const style = {
     background: {
       backgroundColor: "#FFFFFF",
-      boxSizing: "border-box",
       width: "100%",
-      padding: "30px 0px 30px 0px",
+      padding: "30px",
       display: "flex",
       flexDirection: "column",
       alignItems: "center",
@@ -23,12 +22,12 @@ const ExperienceCard = ({
     },
     imgContainer: {
       marginBottom: "30px",
-      width: "90%",
-      height: "100px",
+      width: "100%",
+      height: "120px",
       border: "2px solid red",
     },
     jobInfoContainer: {
-      width: "90%",
+      width: "100%",
       display: "flex",
       marginBottom: "10px",
     },
@@ -41,7 +40,7 @@ const ExperienceCard = ({
       justifyContent: "flex-end",
     },
     actionBulletsContainer: {
-      width: "90%",
+      width: "100%",
     },
   };
 
