@@ -21,10 +21,11 @@ const ContentCard = ({ title, text, url, icon, buttonText }) => {
     },
     title: {
       fontSize: "24px",
-      margin: "16px 0px 0px 0px",
+      margin: "16px 0px 8px 0px",
     },
     text: {
       textAlign: "center",
+      marginBottom: "16px",
     },
   };
 

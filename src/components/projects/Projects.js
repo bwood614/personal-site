@@ -15,7 +15,7 @@ const Projects = () => {
 
   return (
     <div style={style.background}>
-      <h1 style={style.title}>My Experience</h1>
+      <h1 style={style.title}>My Projects</h1>
       <ProjectsCardContainer />
     </div>
   );

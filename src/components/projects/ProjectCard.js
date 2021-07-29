@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 const ProjectCard = ({
   projectTitle,
@@ -10,11 +10,13 @@ const ProjectCard = ({
   imgURL,
   technologies,
 }) => {
+  const [cardExpanded, setCardExpanded] = useState(false);
+
   const style = {
     background: {
       backgroundColor: "#FFFFFF",
       width: "100%",
-      padding: "45px",
+      padding: "40px",
       display: "flex",
       flexDirection: "column",
       alignItems: "center",
@@ -23,8 +25,10 @@ const ProjectCard = ({
     },
     titleContainer: {
       width: "100%",
-      display: 'flex',
-      justifyContent: 'space-between'
+      marginBottom: cardExpanded ? "30px" : "0",
+      display: "flex",
+      justifyContent: "space-between",
+      alignItems: "center",
     },
     imgContainer: {
       marginBottom: "30px",
@@ -34,43 +38,82 @@ const ProjectCard = ({
     },
     overviewContainer: {
       width: "90%",
-    }
+    },
+    tryButton: {
+      height: "fit-content",
+      marginRight: "30px",
+    },
   };
 
-  return <div style={style.background}>
-      <div style={style.titleContainer}>
-          <h2>{projectTitle}</h2>
-          <button>Try it out!</button>
+  const handleExpandCard = () => {
+    setCardExpanded(!cardExpanded);
+  };
+
+  return cardExpanded ? (
+    <div style={style.background}>
+      <div onClick={handleExpandCard} style={style.titleContainer}>
+        <h2>{projectTitle}</h2>
+        <div>
+          <button
+            style={style.tryButton}
+            onClick={() => window.open(projectURL, "_blank")}
+          >
+            Try it out!
+          </button>
+          <i class="fa fa-caret-up fa-lg"></i>
+        </div>
       </div>
       <div style={style.imgContainer}></div>
-      <div style={{width: '100%'}}>
+      <div style={{ width: "100%" }}>
         <h3>Project Overview</h3>
       </div>
       <div style={style.overviewContainer}>
-        <table className={'projectOverviewTable'}>
-            <tr>
-                <td>Description</td>
-                <td>{description}</td>
-            </tr>
-            <tr>
-                <td>Date</td>
-                <td>{startDate} - {endDate}</td>
-            </tr>
-            <tr>
-                <td>Project URL</td>
-                <td>{projectURL}</td>
-            </tr>
-            <tr>
-                <td>Github Repo</td>
-                <td>{githubURL}</td>
-            </tr>
-            <tr>
-                <td>Technologies</td>
-                <td>{technologies.map(tech => <span>{tech}, </span>)}</td>
-            </tr>
+        <table className={"projectOverviewTable"}>
+          <tr>
+            <td>Description</td>
+            <td>{description}</td>
+          </tr>
+          <tr>
+            <td>Date</td>
+            <td>
+              {startDate} - {endDate}
+            </td>
+          </tr>
+          <tr>
+            <td>Github Repo</td>
+            <td>
+              <a href={githubURL} target={"_blank"}>
+                {githubURL}
+              </a>
+            </td>
+          </tr>
+          <tr>
+            <td>Technologies</td>
+            <td>
+              {technologies.map((tech) => (
+                <span>{tech}, </span>
+              ))}
+            </td>
+          </tr>
         </table>
       </div>
-  </div>;
+    </div>
+  ) : (
+    <div onClick={handleExpandCard} style={style.background}>
+      <div style={style.titleContainer}>
+        <h2>{projectTitle}</h2>
+        <div>
+          <button
+            style={style.tryButton}
+            onClick={() => window.open(projectURL, "_blank")}
+          >
+            Try it out!
+          </button>
+          <i class="fa fa-caret-down fa-lg"></i>
+        </div>
+      </div>
+    </div>
+  );
 };
 
 export default ProjectCard;

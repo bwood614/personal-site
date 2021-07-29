@@ -28,6 +28,7 @@ const CardContainer = () => {
                 display: "flex",
                 width: isTablet ? "95%" : "65%",
                 justifyContent: isTablet ? "space-around" : "space-between",
+                maxWidth: "950px",
               }
             : {
                 display: "flex",
