@@ -60,7 +60,7 @@ const ProjectCard = ({
           >
             Try it out!
           </button>
-          <i class="fa fa-caret-up fa-lg"></i>
+          <i className="fa fa-caret-up fa-lg"></i>
         </div>
       </div>
       <div style={style.imgContainer}></div>
@@ -109,7 +109,7 @@ const ProjectCard = ({
           >
             Try it out!
           </button>
-          <i class="fa fa-caret-down fa-lg"></i>
+          <i className="fa fa-caret-down fa-lg"></i>
         </div>
       </div>
     </div>

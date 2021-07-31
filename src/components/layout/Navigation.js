@@ -73,7 +73,7 @@ const Navigation = () => {
         </div>
       </div>
       <div style={style.mobileNavIcon} onClick={handelMobileDropdown}>
-        <i class="fa fa-bars fa-lg"></i>
+        <i className="fa fa-bars fa-lg"></i>
       </div>
     </div>
   );
