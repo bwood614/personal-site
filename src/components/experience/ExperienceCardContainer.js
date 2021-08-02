@@ -4,7 +4,7 @@ import { bindActionCreators } from "redux";
 import * as experienceActions from "../../redux/actions/experienceActions";
 import ExperienceCard from "./ExperienceCard";
 
-const ExperienceCardContainer = ({ experiences, actions }) => {
+const ExperienceCardContainer = ({ experiences, loggedIn, actions }) => {
   const style = {
     width: "70%",
     margin: "0px auto",
@@ -37,6 +37,7 @@ const ExperienceCardContainer = ({ experiences, actions }) => {
 function mapStateToProps(state) {
   return {
     experiences: state.experiences,
+    loggedIn: state.loggedIn,
   };
 }
 

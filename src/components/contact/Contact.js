@@ -9,7 +9,7 @@ const Contact = () => {
     },
     title: {
       textAlign: "center",
-      marginBottom: 0,
+      marginBottom: 60,
     },
     contactContainer: {
       backgroundColor: "#FFFFFF",

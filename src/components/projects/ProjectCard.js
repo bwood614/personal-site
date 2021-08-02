@@ -10,8 +10,6 @@ const ProjectCard = ({
   imgURL,
   technologies,
 }) => {
-  const [cardExpanded, setCardExpanded] = useState(false);
-
   const style = {
     background: {
       backgroundColor: "#FFFFFF",
@@ -25,7 +23,7 @@ const ProjectCard = ({
     },
     titleContainer: {
       width: "100%",
-      marginBottom: cardExpanded ? "30px" : "0",
+      marginBottom: "30px",
       display: "flex",
       justifyContent: "space-between",
       alignItems: "center",
@@ -45,23 +43,16 @@ const ProjectCard = ({
     },
   };
 
-  const handleExpandCard = () => {
-    setCardExpanded(!cardExpanded);
-  };
-
-  return cardExpanded ? (
+  return (
     <div style={style.background}>
-      <div onClick={handleExpandCard} style={style.titleContainer}>
+      <div style={style.titleContainer}>
         <h2>{projectTitle}</h2>
-        <div>
-          <button
-            style={style.tryButton}
-            onClick={() => window.open(projectURL, "_blank")}
-          >
-            Try it out!
-          </button>
-          <i className="fa fa-caret-up fa-lg"></i>
-        </div>
+        <button
+          style={style.tryButton}
+          onClick={() => window.open(projectURL, "_blank")}
+        >
+          Try it out!
+        </button>
       </div>
       <div style={style.imgContainer}></div>
       <div style={{ width: "100%" }}>
@@ -96,21 +87,6 @@ const ProjectCard = ({
             </td>
           </tr>
         </table>
-      </div>
-    </div>
-  ) : (
-    <div onClick={handleExpandCard} style={style.background}>
-      <div style={style.titleContainer}>
-        <h2>{projectTitle}</h2>
-        <div>
-          <button
-            style={style.tryButton}
-            onClick={() => window.open(projectURL, "_blank")}
-          >
-            Try it out!
-          </button>
-          <i className="fa fa-caret-down fa-lg"></i>
-        </div>
       </div>
     </div>
   );

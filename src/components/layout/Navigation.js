@@ -1,8 +1,9 @@
 import React from "react";
 import NavItem from "./NavItem";
 import useBreakpoints from "../../hooks/useBreakpoints";
+import { connect } from "react-redux";
 
-const Navigation = () => {
+const Navigation = ({ loggedIn }) => {
   const { isMobile, isTablet, isMobileOrTablet } = useBreakpoints();
 
   const style = {
@@ -69,7 +70,11 @@ const Navigation = () => {
           <NavItem to={"/contact"} name={"Contact Me"} />
         </div>
         <div style={style.rightNav}>
-          <NavItem to={"/"} name={"Sign In"} />
+          {loggedIn ? (
+            <NavItem to={"/admin"} name={"Admin"} />
+          ) : (
+            <NavItem to={"/login"} name={"Sign In"} />
+          )}
         </div>
       </div>
       <div style={style.mobileNavIcon} onClick={handelMobileDropdown}>
@@ -79,4 +84,10 @@ const Navigation = () => {
   );
 };
 
-export default Navigation;
+function mapStateToProps(state) {
+  return {
+    loggedIn: state.loggedIn,
+  };
+}
+
+export default connect(mapStateToProps)(Navigation);

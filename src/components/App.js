@@ -1,12 +1,23 @@
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Route,
+  Switch,
+  Redirect,
+} from "react-router-dom";
 import Header from "./layout/Header";
 import Footer from "./layout/Footer";
 import AboutMe from "./aboutMe/AboutMe";
 import Experience from "./experience/Experience";
 import Projects from "./projects/Projects";
 import Contact from "./contact/Contact";
+import Login from "./login/Login";
+import Admin from "./admin/Admin";
+import AccessDenied from "./shared/AccessDenied";
 
-function App() {
+import { connect } from "react-redux";
+import PageDoesNotExist from "./shared/PageDoesNotExist";
+
+function App({ loggedIn }) {
   return (
     <>
       <Router>
@@ -24,6 +35,15 @@ function App() {
           <Route exact path="/contact">
             <Contact />
           </Route>
+          <Route exact path="/login">
+            {loggedIn ? <Redirect to="/" /> : <Login />}
+          </Route>
+          <Route exact path="/admin">
+            {loggedIn ? <Admin /> : <AccessDenied />}
+          </Route>
+          <Route path="">
+            <PageDoesNotExist />
+          </Route>
         </Switch>
         <Footer />
       </Router>
@@ -31,4 +51,10 @@ function App() {
   );
 }
 
-export default App;
+function mapStateToProps(state) {
+  return {
+    loggedIn: state.loggedIn,
+  };
+}
+
+export default connect(mapStateToProps)(App);

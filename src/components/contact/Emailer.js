@@ -49,6 +49,9 @@ const Emailer = () => {
           alert("An error occurred, Please try again", error.text);
         }
       );
+    setFromEmail("");
+    setSubjectLine("");
+    setEmailMessage("");
   };
 
   return (

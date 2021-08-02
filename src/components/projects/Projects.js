@@ -1,24 +1,41 @@
 import React from "react";
 import ProjectsCardContainer from "./ProjectsCardContainer.js";
+import { connect } from "react-redux";
+import ContentEditButton from "../admin/ContentEditButton.js";
 
-const Projects = () => {
+const Projects = ({ loggedIn }) => {
   const style = {
     background: {
       backgroundColor: "#F3F3F3",
       padding: 30,
     },
     title: {
-      textAlign: "center",
+      marginRight: "20px",
       marginBottom: 0,
     },
   };
 
   return (
     <div style={style.background}>
-      <h1 style={style.title}>My Projects</h1>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <h1 style={style.title}>My Projects</h1>
+        <ContentEditButton />
+      </div>
       <ProjectsCardContainer />
     </div>
   );
 };
 
-export default Projects;
+function mapStateToProps(state) {
+  return {
+    loggedIn: state.loggedIn,
+  };
+}
+
+export default connect(mapStateToProps)(Projects);

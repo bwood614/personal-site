@@ -1,24 +1,41 @@
 import React from "react";
 import ExperienceCardContainer from "./ExperienceCardContainer";
+import { connect } from "react-redux";
+import ContentEditButton from "../admin/ContentEditButton";
 
-const Experience = () => {
+const Experience = ({ loggedIn }) => {
   const style = {
     background: {
       backgroundColor: "#F3F3F3",
       padding: 30,
     },
     title: {
-      textAlign: "center",
       marginBottom: 0,
+      marginRight: "20px",
     },
   };
 
   return (
     <div style={style.background}>
-      <h1 style={style.title}>My Experience</h1>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <h1 style={style.title}>My Experience</h1>
+        <ContentEditButton />
+      </div>
       <ExperienceCardContainer />
     </div>
   );
 };
 
-export default Experience;
+function mapStateToProps(state) {
+  return {
+    loggedIn: state.loggedIn,
+  };
+}
+
+export default connect(mapStateToProps)(Experience);
