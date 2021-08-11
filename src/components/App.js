@@ -12,6 +12,8 @@ import Projects from "./projects/Projects";
 import Contact from "./contact/Contact";
 import Login from "./login/Login";
 import Admin from "./admin/Admin";
+import ManageExperience from "./admin/ManageExperience";
+import ManageProject from "./admin/ManageProject";
 import AccessDenied from "./shared/AccessDenied";
 
 import { connect } from "react-redux";
@@ -40,6 +42,15 @@ function App({ loggedIn }) {
           </Route>
           <Route exact path="/admin">
             {loggedIn ? <Admin /> : <AccessDenied />}
+          </Route>
+          <Route exact path="/admin/experience/" component={ManageExperience} />
+          <Route
+            exact
+            path="/admin/experience/:id"
+            component={ManageExperience}
+          />
+          <Route exact path="/admin/project/:id">
+            <ManageProject />
           </Route>
           <Route path="">
             <PageDoesNotExist />
